@@ -1,34 +1,42 @@
 :root {
-  --bg: #f4f6fa;
-  --card: #ffffff;
-  --text: #1c2333;
-  --muted: #5d6679;
-  --border: #dde2ec;
-  --accent: #2f5bea;
+  --bg: #e6f7f4;
+  --bg-image: linear-gradient(150deg, #d5f5ee 0%, #e9e5ff 55%, #ffe9d6 100%);
+  --card: #ffffffee;
+  --text: #17212b;
+  --muted: #55657a;
+  --border: #cfe3e8;
+  --accent: #0f766e;
+  --accent-2: #7c3aed;
+  --highlight: #f59e0b;
+  --brand-gradient: linear-gradient(90deg, #0f766e, #7c3aed);
   --accent-text: #ffffff;
-  --grid: #e6eaf2;
-  --error-bg: #fdecec;
-  --error-border: #f2b8b8;
+  --grid: #dbe9ee;
+  --error-bg: #fff0f0;
+  --error-border: #f5b5b5;
   --error-text: #8a1c1c;
-  --up: #12805c;
-  --down: #c0392b;
+  --up: #0f8a5f;
+  --down: #d1342a;
   color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #11151f;
-    --card: #1a2030;
-    --text: #e8ecf5;
-    --muted: #9aa3b8;
-    --border: #2b3347;
-    --accent: #7b9bff;
-    --accent-text: #0e1220;
-    --grid: #2a3246;
+    --bg: #0b1220;
+    --bg-image: linear-gradient(150deg, #06201f 0%, #150f33 55%, #2b1408 100%);
+    --card: #111a2bee;
+    --text: #ecf4f8;
+    --muted: #9db0c4;
+    --border: #25384d;
+    --accent: #2dd4bf;
+    --accent-2: #a78bfa;
+    --highlight: #fbbf24;
+    --brand-gradient: linear-gradient(90deg, #2dd4bf, #a78bfa);
+    --accent-text: #04201d;
+    --grid: #22344a;
     --error-bg: #3a1c1f;
     --error-border: #6d2f35;
     --error-text: #ffc9cc;
-    --up: #4cd6a2;
+    --up: #4ade80;
     --down: #ff8a7a;
   }
 }
@@ -39,7 +47,8 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  min-height: 100vh;
+  background: var(--bg) var(--bg-image) fixed;
   color: var(--text);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
@@ -55,7 +64,12 @@ body {
 
 h1 {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 2rem;
+  width: fit-content;
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 h2 {
@@ -72,10 +86,24 @@ h2 {
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 16px;
+  position: relative;
   padding: 20px;
   display: grid;
   gap: 16px;
+  box-shadow: 0 8px 24px -12px rgba(76, 29, 149, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 20px;
+  right: 20px;
+  height: 4px;
+  border-radius: 0 0 4px 4px;
+  background: var(--brand-gradient);
 }
 
 .card-head {
@@ -136,7 +164,9 @@ button:focus-visible {
 }
 
 .swap:hover {
-  border-color: var(--accent);
+  background: var(--highlight);
+  border-color: var(--highlight);
+  color: #1c1300;
 }
 
 .result {
@@ -152,13 +182,22 @@ button:focus-visible {
   overflow-wrap: anywhere;
 }
 
+.big {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+  max-width: 100%;
+}
+
 .big span {
-  color: var(--accent);
+  color: inherit;
 }
 
 .btn {
   font: inherit;
-  background: var(--accent);
+  background: var(--error-text);
   color: var(--accent-text);
   border: 0;
   border-radius: 8px;
@@ -217,7 +256,7 @@ button:focus-visible {
 }
 
 .segmented button.active {
-  background: var(--accent);
+  background: var(--brand-gradient);
   color: var(--accent-text);
 }
 
