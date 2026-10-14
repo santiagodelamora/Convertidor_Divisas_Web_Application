@@ -1,0 +1,16 @@
+{
+  "name": "convertidor-divisas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Convertidor de divisas con historial (React + Express + TypeScript)",
+  "workspaces": ["server", "client"],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w server && npm run build -w client",
+    "start": "npm run start -w server",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
