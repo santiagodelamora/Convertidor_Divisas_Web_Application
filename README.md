@@ -7,11 +7,9 @@ Aplicación web que convierte entre divisas y muestra la evolución del tipo de 
 - **API externa:** [Frankfurter](https://frankfurter.dev) — gratuita y sin clave de API (tasas del Banco Central Europeo)
 
 ## Requisitos
-
 - [Node.js](https://nodejs.org) 20 o superior (incluye npm)
 
 ## Instalación
-
 ```bash
 git clone <URL-DE-TU-REPOSITORIO>
 cd <carpeta-del-repositorio>
@@ -21,7 +19,6 @@ npm install
 El proyecto usa *npm workspaces*: un único `npm install` en la raíz instala las dependencias de `server/` y `client/`.
 
 ## Ejecutar en desarrollo
-
 ```bash
 npm run dev
 ```
@@ -36,7 +33,6 @@ Levanta a la vez:
 Abre http://localhost:5173. Vite redirige las peticiones `/api` al servidor Express.
 
 ## Ejecutar en producción
-
 ```bash
 npm run build
 npm start
@@ -45,14 +41,12 @@ npm start
 Express sirve el cliente compilado y la API en http://localhost:3001.
 
 ## Variables de entorno (opcionales)
-
 | Variable | Por defecto | Descripción |
 | --- | --- | --- |
 | `PORT` | `3001` | Puerto del servidor Express |
 | `FRANKFURTER_URL` | `https://api.frankfurter.dev/v1` | URL base de la API externa |
 
 ## Endpoints del servidor
-
 | Método | Ruta | Descripción |
 | --- | --- | --- |
 | GET | `/api/currencies` | Lista de divisas disponibles |
@@ -61,7 +55,6 @@ Express sirve el cliente compilado y la API en http://localhost:3001.
 | GET | `/api/health` | Comprobación de estado |
 
 ## Manejo de errores
-
 | Situación | Cómo se maneja |
 | --- | --- |
 | Sin conexión del usuario | Se detecta con `navigator.onLine` y los eventos `online`/`offline`; se muestra un aviso y un botón **Reintentar** |
@@ -73,9 +66,8 @@ Express sirve el cliente compilado y la API en http://localhost:3001.
 Además, el servidor guarda en caché las respuestas (1 min las conversiones, 10 min el historial, 24 h la lista de divisas) para reducir las llamadas a la API externa.
 
 ## Estructura
-
 ```
-.
+./
 ├── client/            # React + Vite
 │   └── src/
 │       ├── api.ts             # Peticiones y errores tipados
@@ -90,7 +82,6 @@ Además, el servidor guarda en caché las respuestas (1 min las conversiones, 10
 ```
 
 ## Scripts
-
 | Comando | Acción |
 | --- | --- |
 | `npm run dev` | Cliente y servidor en modo desarrollo |
@@ -98,13 +89,19 @@ Además, el servidor guarda en caché las respuestas (1 min las conversiones, 10
 | `npm start` | Inicia el servidor compilado |
 | `npm run typecheck` | Verifica los tipos de TypeScript |
 
-## Subir a GitHub
+---
 
-```bash
-git init
-git add .
-git commit -m "Convertidor de divisas con historial"
-git branch -M main
-git remote add origin https://github.com/<usuario>/<repositorio>.git
-git push -u origin main
-```
+## Uso de IA en el desarrollo de este proyecto
+### Claude Code
+- **Modelo:** Sonnet 5.5
+- **¿Para qué se utilizó?** Para el desarrollo, ejecución de pruebas e inicialización del repositorio local dentro de la carpeta del proyecto.
+
+### Codex (OpenAI)
+- **Modelo:** Luna 6
+- **¿Para qué se utilizó?** Aplicación de estilo y formato al documento de la Bitácora de Programación con IA.
+
+### Donde no se usó IA
+- Escritura de esta sección del README.
+- Comentarios de los commits y push.
+- Creación del repositorio remoto (en GitHub).
+- Escritura de la Bitácora de Programación con IA
